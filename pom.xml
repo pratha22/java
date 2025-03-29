@@ -46,7 +46,7 @@
 	<!--	<dependency>
 			<groupId>com.fasterxml.jackson.dataformat</groupId>
 			<artifactId>jackson-dataformat-xml</artifactId>
-		</dependency> -->
+		</dependency> dependency for geting response in xml format when header accepts output in application/xml-->
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
