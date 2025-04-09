@@ -1,14 +1,23 @@
 package com.example.pb.social_media.User;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.Past;
 import jakarta.validation.constraints.Size;
 
+@Entity (name = "user_details")
 public class User {
 	
+	@Id
+	@GeneratedValue
 	private int id;
 	
 	@Size(min=2)
@@ -17,6 +26,19 @@ public class User {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
     @Past
     private LocalDate birthdate;
+    
+    @OneToMany (mappedBy = "user")
+    private List<UserPosts> userPosts;
+    
+    public List<UserPosts> getUserPosts() {
+		return userPosts;
+	}
+
+	public void setUserPosts(List<UserPosts> userPosts) {
+		this.userPosts = userPosts;
+	}
+
+	public User() {}
 	
 	public User(int id, String name, LocalDate birthdate) {
 		super();
